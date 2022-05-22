@@ -4,15 +4,14 @@ export class Particle {
     y;
     speed;
     mouse;
-    constructor(mouse) {
-        this.mouse = mouse;
+    constructor() {
         this.size = Math.random() * 10;
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.speedY = Math.random() * 5 + 2;
         this.speedX = 0;
     }
-    fall() {
+    fall(mouse) {
         this.y += this.speedY;
         this.x += this.speedX;
         if (this.y > canvas.height) {
@@ -21,16 +20,16 @@ export class Particle {
             this.y = 0 - this.size;
             this.speedY = Math.random() * 5 + 2;
         }
-        if (this.y > this.mouse.y - 50 &&
-            this.y < this.mouse.y + 50 &&
-            this.x > this.mouse.x - 50 &&
-            this.x < this.mouse.x + 50 &&
-            this.mouse.x > 0 &&
-            this.mouse.x < canvas.width) {
-            if (this.x > this.mouse.x - 50 && this.x < this.mouse.x) {
-                this.speedX += -0.1;
-            } else if (this.x < this.mouse.x + 50 && this.x > this.mouse.x) {
-                this.speedX += 0.1;
+        if (this.y > mouse.y - 50 &&
+            this.y < mouse.y + 50 &&
+            this.x > mouse.x - 50 &&
+            this.x < mouse.x + 50 &&
+            mouse.x > 0 &&
+            mouse.x < canvas.width) {
+            if (this.x > mouse.x - 50 && this.x < mouse.x) {
+                this.speedX += -0.2;
+            } else if (this.x < mouse.x + 50 && this.x > mouse.x) {
+                this.speedX += 0.2;
             }
         } else {
             if (this.speedX > 0) {
