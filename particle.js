@@ -28,12 +28,16 @@ export class Particle {
             this.mouse.x > 0 &&
             this.mouse.x < canvas.width) {
             if (this.x > this.mouse.x - 50 && this.x < this.mouse.x) {
-                this.speedX = -2;
+                this.speedX += -0.1;
             } else if (this.x < this.mouse.x + 50 && this.x > this.mouse.x) {
-                this.speedX = 2;
+                this.speedX += 0.1;
             }
         } else {
-            this.speedX = 0;
+            if (this.speedX > 0) {
+                this.speedX += -0.01;
+            } else if (this.speedX < 0) {
+                this.speedX += 0.05;
+            }
         }
     }
     draw(ctx) {
