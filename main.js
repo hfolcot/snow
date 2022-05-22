@@ -14,14 +14,23 @@ const mouse = {
     y: 0
 }
 
+window.addEventListener('resize', e => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+})
+
 document.addEventListener('mousemove', e => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 })
 
+document.addEventListener('touchend', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientX;
+})
 
 
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 1000; i++) {
     particles.push(new Particle(mouse));
 }
 
