@@ -19,6 +19,7 @@ export class Particle {
             this.x = Math.random() * canvas.width;
             this.y = 0 - this.size;
             this.speedY = Math.random() * 5 + 2;
+            this.speedX = 0;
         }
         if (this.y > mouse.y - 50 &&
             this.y < mouse.y + 50 &&

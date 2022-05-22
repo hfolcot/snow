@@ -9,17 +9,18 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const particles = [];
+let particles = [];
 const mouse = {
-    x: 0,
-    y: 0
+    x: -100,
+    y: -100
 }
 
-const brolly = new Umbrella(mouse.x, mouse.y);
+const brolly = new Umbrella(-100, -100);
 
 window.addEventListener('resize', e => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    populateParticles();
 })
 
 document.addEventListener('mousemove', e => {
@@ -34,8 +35,12 @@ document.addEventListener('touchstart', e => {
 })
 
 
-for (let i = 0; i < 1000; i++) {
-    particles.push(new Particle(mouse));
+function populateParticles() {
+    particles = [];
+    for (let i = 0; i < canvas.width; i++) {
+        particles.push(new Particle(mouse));
+    }
+
 }
 
 function animate() {
@@ -49,4 +54,5 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+populateParticles();
 animate();
